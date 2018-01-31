@@ -54,9 +54,7 @@ import java.util.concurrent.TimeUnit;
 
         Thread.sleep(2000);
         driver.close();
-
         }
-
 
         @Test(groups = {"part2"})
         public  void second() throws InterruptedException {
@@ -78,18 +76,29 @@ import java.util.concurrent.TimeUnit;
         WebElement passwordField = driver.findElement(By.id("Password"));
         passwordField.clear();
         passwordField.sendKeys("1234");
+        Thread.sleep(2000);
 
         WebElement enterButton = driver.findElement(By.xpath("//button"));
         enterButton.click();
+        Thread.sleep(2000);
 
+        WebElement supportLabel = driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[3]/ul/li[1]/a/p/span"));
+        supportLabel.click();
+        Thread.sleep(2000);
+
+        WebElement dropDownToggle = driver.findElement(By.xpath("//a[contains(@href, '#')]"));
+        dropDownToggle.click();
         Thread.sleep(2000);
 
         WebElement logoutButton = driver.findElement(By.className("logout"));
-
         logoutButton.click();
-
         Thread.sleep(2000);
 
+        boolean isLoggedOut = driver.findElement(By.className("fa-user")).isDisplayed();
+        Assert.assertTrue(isLoggedOut);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        Thread.sleep(2000);
         driver.close();
 
           }
