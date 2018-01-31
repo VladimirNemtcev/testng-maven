@@ -8,6 +8,7 @@
             <run>
                 <include name="part1"/>
                 <include name="part2"/>
+                <include name="part3"/>
             </run>
         </groups>
 
